@@ -1,0 +1,14 @@
+services:
+  gateway:
+    image: caddy:latest
+    container_name: vps_gateway
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - gateway_data:/data
+      - gateway_config:/config
+
+volumes:
+  gateway_data:
+  gateway_config:
