@@ -4,9 +4,11 @@ This repository manages the central reverse proxy and automated TLS/SSL certific
 
 It runs on **Caddy** using `network_mode: host` to route public HTTPS (`:443`) and HTTP (`:80`) traffic directly to isolated backend services listening on local loopback ports.
 
+---
 
 ## Architecture Overview
 
+```text
                Public Traffic (Internet)
                           │
                    Ports 80 & 443
@@ -28,6 +30,7 @@ It runs on **Caddy** using `network_mode: host` to route public HTTPS (`:443`) a
 └──────────────────┘              └──────────────────┘
 
 
+```
 
 ## Clone & Start Gateway (First Time)
 
