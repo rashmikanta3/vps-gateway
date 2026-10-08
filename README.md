@@ -32,29 +32,35 @@ It runs on **Caddy** using `network_mode: host` to route public HTTPS (`:443`) a
 
 ```
 
-## Clone & Start Gateway (First Time)
-
+## 1. Clone & Start Gateway (First Time)
+```
 git clone git@github.com:<your-username>/vps-gateway.git ~/gateway
 cd ~/gateway
 docker compose up -d
-
-## 2.** Verify Certificates & Status**
+```
+## 2. Verify Certificates & Status
 ## View active routing status
+```
 docker compose ps
+```
 
-## **Check SSL certificate retrieval logs**
+## 3. Check SSL certificate retrieval logs
+```
 docker logs --tail=50 vps_gateway
+```
 
-# **Zero-Downtime Configuration Reload**
+# 4. Zero-Downtime Configuration Reload
 ## When adding new domains or editing Caddyfile, do not recreate the container. Reload the configuration in place:
-
+```
 cd ~/gateway
 git pull origin main
 docker exec -it vps_gateway caddy reload --config /etc/caddy/Caddyfile
+```
 
-## **Firewall Drops (Linux/OCI)**:
-
+## Firewall Drops (Linux/OCI)
+```
 sudo iptables -I INPUT 1 -i docker0 -j ACCEPT
 sudo iptables -I INPUT 1 -p tcp --dport 8001 -j ACCEPT
 sudo iptables -I INPUT 1 -p tcp --dport 8002 -j ACCEPT
 sudo netfilter-persistent save
+```
