@@ -1,0 +1,16 @@
+{
+    email rashmikanta3@gmail.com
+}
+
+# Aman Project
+tpsodlenforcement.duckdns.org {
+    request_body {
+        max_size 50MB
+    }
+    reverse_proxy 127.0.0.1:8002
+}
+
+# Arcova Project
+arcovahomes.in, www.arcovahomes.in {
+    reverse_proxy 127.0.0.1:8001
+}
